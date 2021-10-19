@@ -1,5 +1,5 @@
 public class HexConvert {
-
+    //convert string into hexadecimal value
     public static String toHex(String str){
         StringBuilder sb = new StringBuilder();
         //Converting string to character array
@@ -10,7 +10,7 @@ public class HexConvert {
         }
         return sb.toString();
     }
-
+    //convert hexadecimal value into string
     public static String fromHex(String str){
         StringBuilder result = new StringBuilder();
         char[] charArray = str.toCharArray();

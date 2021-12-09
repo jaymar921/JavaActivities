@@ -16,6 +16,8 @@ public class readFile{
          while((i = input.read())!=-1){
             System.out.print((char)i);
          }
+         
+         input.close()
       }catch(IOException error){}
    }
 }

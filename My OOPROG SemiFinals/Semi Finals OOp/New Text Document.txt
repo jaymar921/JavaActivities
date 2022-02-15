@@ -1,0 +1,48 @@
+String Message = "message";
+
+char[] Message_c = Message.toCharArray();
+
+long key = 1;
+long access_key = 0;
+long level_1_key = 0;
+long level_2_key = 0;
+long level_3_key = 0;
+long special_key = 0;
+
+access_key = key*2;
+level_1_key = key*2-1;
+level_2_key = level_1_key*access_key;
+level_3_key = level_2_key-level_1_key;
+special_key = level_2_key/level_1_key+level_3_key;
+====================================================
+key         = 1
+access_key  = 2
+level_1_key = 1
+level_2_key = 2
+level_3_key = 1
+special_key = 3
+
+key         = 2
+access_key  = 4
+level_1_key = 3
+level_2_key = 12
+level_3_key = 9
+special_key = 13
+
+key         = 3
+access_key  = 9
+level_1_key = 8
+level_2_key = 72
+level_3_key = 64
+special_key = 73
+
+
+
+
+
+
+
+
+
+
+

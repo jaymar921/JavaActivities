@@ -1,0 +1,22 @@
+Student Management System By Jayharron Mar Abejar
+the main method is in the StudentManagement.class
+
+StudentManagement.class dependencies
+::
+   ** - important (must be in the same folder)
+   *  - least important
+
+::**
+   Birthdate.class
+   Student.class
+   List.class
+   StudentList.class
+::*
+   student_data.txt
+      - if not exist(it creates new)
+::
+
+NOTE:
+   Uppon entering the birthdate,
+   the day, month and year should be separated by /(forward slash)
+   example (30/11/2020)

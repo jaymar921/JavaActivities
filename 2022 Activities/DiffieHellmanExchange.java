@@ -1,4 +1,14 @@
 public class DiffieHellmanExchange {
+    
+    /*
+        Problem:
+        Alice and Bobs agree on p=11 and g=2  
+        Alice secret key is 9 
+        Bob secret key is 4 
+        What is their shared secret key using Diffie Hellman? 
+        
+        calculation formula: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+    */
 
     static class Person{
         public int p;

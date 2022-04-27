@@ -1,10 +1,10 @@
 package com.jaymar921.CustomEvent;
 
-import com.jaymar921.CustomEvent.CALLER.AnotherEventCaller;
-import com.jaymar921.CustomEvent.CALLER.DeathEventCaller;
-import com.jaymar921.CustomEvent.CALLER.EventCaller;
-import com.jaymar921.CustomEvent.CALLER.RespawnEventCaller;
-import com.jaymar921.CustomEvent.Event.Player;
+import CALLER.AnotherEventCaller;
+import CALLER.DeathEventCaller;
+import CALLER.EventCaller;
+import CALLER.RespawnEventCaller;
+import Event.Player;
 
 public class Main {
 

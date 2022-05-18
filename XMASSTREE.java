@@ -7,7 +7,7 @@ public class XMASSTREE extends JFrame{
    
    JLabel[] label = new JLabel[14];
    
-   public another(){
+   public XMASSTREE(){
       super("Merry Christmas");
       setVisible(true);
       setSize(500,400);
@@ -74,6 +74,6 @@ public class XMASSTREE extends JFrame{
    }
    
    public static void main(String... args){
-      new another();
+      new XMASSTREE();
    }
 }

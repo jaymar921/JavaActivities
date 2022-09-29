@@ -8,7 +8,7 @@ public class ParenthesisCheckerUpdate2022{
          java.util.Scanner scan=new java.util.Scanner(new java.io.File("paren.txt"));
          String item=null;        
          while((item=scan.nextLine())!=null){
-         
+            stack = new MyStackLinked();
             System.out.print(item);
             char[] items=item.toCharArray();
             for(char c:items){ //here is my code
@@ -19,24 +19,24 @@ public class ParenthesisCheckerUpdate2022{
                   stack.push(c);
                }
                
-               if(!stack.isEmpty()){
+               if(stack.peek() != null){
                   if(c == ')'){
-                     if((char)stack.peek() == '('){
+                     if(((char)stack.peek()) == '('){
                         stack.pop();
                      }else
                         stack.push(c);
                   }else if(c == '>'){
-                     if((char)stack.peek() == '<'){
+                     if(((char)stack.peek()) == '<'){
                         stack.pop();
                      }else
                         stack.push(c);
                   }else if(c == ']'){
-                     if((char)stack.peek() == '['){
+                     if(((char)stack.peek()) == '['){
                         stack.pop();
                      }else
                         stack.push(c);
                   }else if(c == '}'){
-                     if((char)stack.peek() == '{'){
+                     if(((char)stack.peek()) == '{'){
                         stack.pop();
                      }else
                         stack.push(c);

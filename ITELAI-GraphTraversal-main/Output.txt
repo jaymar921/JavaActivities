@@ -1,0 +1,56 @@
+ADJACENCY LIST
+atlantic hardware::>jollibee gaisano tabunok->
+jollibee gaisano tabunok::>atlantic hardware->tabunok->j&t express->
+tabunok::>jollibee gaisano tabunok->j&t express->lagtang barangay hall->simbajon medical clinic->
+lagtang barangay hall::>tabunok->
+simbajon medical clinic::>tabunok->wilcon depot->victoria's halo halo->
+wilcon depot::>simbajon medical clinic->robinsons supermarket->
+robinsons supermarket::>wilcon depot->yahay foodpark->
+yahay foodpark::>robinsons supermarket->starmall talisay->
+starmall talisay::>yahay foodpark->yasco motor parts corporation->
+j&t express::>jollibee gaisano tabunok->tabunok->victoria's halo halo->paseo ricardo commercial center->
+victoria's halo halo::>simbajon medical clinic->j&t express->montery school inc->
+montery school inc::>victoria's halo halo->cebu south medical center->
+cebu south medical center::>montery school inc->yasco motor parts corporation->
+paseo ricardo commercial center::>j&t express->rafael rabaya rd.->
+gaisano capital srp::>rex kandingan sa srp->san roque->
+rex kandingan sa srp::>gaisano capital srp->rafael rabaya rd.->
+rafael rabaya rd.::>paseo ricardo commercial center->rex kandingan sa srp->maglasang subd.->tanke->
+maglasang subd.::>rafael rabaya rd.->cansojong basketball gym->adelante pizza->
+adelante pizza::>maglasang subd.->yasco motor parts corporation->sta. teresa de avila church->
+yasco motor parts corporation::>cebu south medical center->adelante pizza->starmall talisay->7-eleven dumlog->
+san roque::>gaisano capital srp->tanke->
+tanke::>rafael rabaya rd.->cansojong basketball gym->san roque->
+cansojong basketball gym::>maglasang subd.->sta. teresa de avila church->tanke->paz beach resort->
+paz beach resort::>cansojong basketball gym->
+sta. teresa de avila church::>7-eleven dumlog->cansojong basketball gym->adelante pizza->south covina->
+south covina::>rafols resort->sta. teresa de avila church->
+rafols resort::>sao joseph fab & signage trading->south covina->
+sao joseph fab & signage trading::>cebu cardinal bakeshop->rafols resort->
+cebu cardinal bakeshop::>7-eleven dumlog->sao joseph fab & signage trading->
+7-eleven dumlog::>yasco motor parts corporation->sta. teresa de avila church->cebu cardinal bakeshop->
+
+
+Origin: paz beach resort
+Goal: south covina
+
+
+Breadth First Search
+TRAVERSAL
+paz beach resort->cansojong basketball gym->maglasang subd.->sta. teresa de avila church->tanke->rafael rabaya rd.->adelante pizza->7-eleven dumlog->
+Reconstructing path.
+paz beach resort->cansojong basketball gym->sta. teresa de avila church->south covina->
+
+
+Depth First Search
+TRAVERSAL
+paz beach resort->cansojong basketball gym->tanke->san roque->gaisano capital srp->rex kandingan sa srp->rafael rabaya rd.->paseo ricardo commercial center->j&t express->victoria's halo halo->montery school inc->cebu south medical center->yasco motor parts corporation->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->
+Reconstructing path.
+paz beach resort->cansojong basketball gym->tanke->rafael rabaya rd.->paseo ricardo commercial center->j&t express->victoria's halo halo->montery school inc->cebu south medical center->yasco motor parts corporation->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->
+
+
+Depth First Search [RECURSIVE]
+TRAVERSAL
+paz beach resort->cansojong basketball gym->maglasang subd.->rafael rabaya rd.->paseo ricardo commercial center->j&t express->jollibee gaisano tabunok->atlantic hardware->tabunok->lagtang barangay hall->simbajon medical clinic->wilcon depot->robinsons supermarket->yahay foodpark->starmall talisay->yasco motor parts corporation->cebu south medical center->montery school inc->victoria's halo halo->adelante pizza->sta. teresa de avila church->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->
+Reconstructing path.
+paz beach resort->cansojong basketball gym->maglasang subd.->rafael rabaya rd.->paseo ricardo commercial center->j&t express->jollibee gaisano tabunok->tabunok->simbajon medical clinic->wilcon depot->robinsons supermarket->yahay foodpark->starmall talisay->yasco motor parts corporation->adelante pizza->sta. teresa de avila church->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->

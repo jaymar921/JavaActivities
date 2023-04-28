@@ -86,6 +86,32 @@ class GraphTraversal
     }
 
     //------------------------------------------------------------------------
+    //  Method Name : connect
+    //  Description : Connect one vertex to another vertex.
+    //  Arguments   : string v1
+    //                string v2
+    //                int dist
+    //  Return      : 0 (OK)
+    //               -1 (NG - place is not in the list)
+    //------------------------------------------------------------------------
+
+    public int connect(String place1, String place2, double distance) 
+    {
+        Node p1 = getNodeByName(place1.toLowerCase());
+        Node p2 = getNodeByName(place2.toLowerCase());
+
+        if(p1 == null || p2 == null) {
+            System.out.println("Error: Could'nt find the places!");
+            return -1;
+        } else { /* nothing todo */ }
+
+        p1.addNeighbor(p2, distance);
+        p2.addNeighbor(p1, distance);
+
+        return 0;
+    }
+
+    //------------------------------------------------------------------------
     //  Method Name : displayAdjacencyList
     //  Description : Display adjacency list.
     //  Arguments   : None.
@@ -133,14 +159,13 @@ class GraphTraversal
             Node v = q.remove();
 
             if(v.name.equals(g.toLowerCase())) {
-                System.out.println();
                 reconstruct_path(v);
                 //System.out.println("Found!");
                 unvisit();
                 return;
             }
 
-            System.out.print(v.name + "->");
+            //System.out.print(v.name + "->");
             Iterator<Neighbor> neighbor_ite = v.neighbors.iterator();
 
             while(neighbor_ite.hasNext()){
@@ -183,13 +208,12 @@ class GraphTraversal
             Node v = st.pop();
 
             if(v.name.equals(g.toLowerCase())) {
-                System.out.println();
                 reconstruct_path(v);
                 //System.out.println("Found!");
                 unvisit();
                 return;
             }
-            System.out.print(v.name + "->");
+            //System.out.print(v.name + "->");
             Iterator<Neighbor> neighbor_ite = v.neighbors.iterator();
 
             while(neighbor_ite.hasNext()){
@@ -247,7 +271,6 @@ class GraphTraversal
         while(node_ite.hasNext()) {
             Node n = node_ite.next();
             n.isVisited = false;
-            n.parent = null;
         }
     }
 
@@ -296,7 +319,6 @@ class GraphTraversal
                 DFS-recursive(G, w)
     */
       AtomicBoolean found = new AtomicBoolean(false);
-      unvisit();          // unvisit all the nodes
       Node start = getNodeByName(s.toLowerCase());
       Node goal = getNodeByName(g.toLowerCase());
       
@@ -304,7 +326,10 @@ class GraphTraversal
          System.out.println("Path not found");
          return;
       }
-      System.out.println("TRAVERSAL");
+      start.parent = null;
+      goal.parent = null;
+      
+      //depthFirstSearchRecursive_helper(s,g, found); // calling the recursive function
       depthFirstSearchR_helper(start, goal, found);
       
       if(!found.get())
@@ -315,34 +340,154 @@ class GraphTraversal
     
     public void depthFirstSearchR_helper(Node start, Node goal, AtomicBoolean found){
       
-      if(found.get())
+      
+      if(start.isVisited && found.get())
          return;
-         
+      
       start.isVisited = true;
       
-      System.out.print(start.name+"->");
-      
       if(start.name.equalsIgnoreCase(goal.name)) {
-         System.out.println();
+         System.out.println("Found in DFS_recursive!");
          reconstruct_path(start);
          found.set(true);
          return;
       }
       
       
-      
-      
       Iterator<Neighbor> n_ite = start.neighbors.iterator();
       while(n_ite.hasNext()){
          Node neighbor = n_ite.next().node;
-         
-         
-         if(neighbor.isVisited)
-            continue;
          neighbor.parent = start;
          
          depthFirstSearchR_helper(neighbor,goal,found);
       }
       
+      start.parent = null;
     }
+
+    public void GBFS(String start_place, String goal_place){
+        PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingInt(Node::heuristic));
+        HashSet<Node> closedList = new HashSet<>();
+        
+        Node starting_position = getNodeByName(start_place);
+        starting_position.parent = null;
+
+        openList.add(starting_position);
+        while(!openList.isEmpty()){
+            Node current = openList.poll();
+            
+            /*
+            
+            [DEBUGGING PURPOSE]
+            
+            System.out.println("\n========================");
+            for(Node node : openList){
+               System.out.println("Val: "+node.heuristic+"  | N: "+node.name+" ");
+            }
+            
+            */
+
+            if(current.name.equalsIgnoreCase(goal_place)){
+                reconstruct_path_with_distance(current);
+                return;
+            }
+
+            closedList.add(current);
+
+            for(Neighbor neighborNode : current.neighbors){
+                Node neighbor = neighborNode.node;
+
+                if(closedList.contains(neighbor)){
+                    continue;
+                }
+
+                if(!openList.contains(neighbor)){
+                    neighbor.parent = current;
+
+                    neighbor.updateHeuristicValue(current.name);
+                    //neighbor.heuristic = current.heuristic;
+                    
+                    //System.out.println("Heuristic Value from "+neighbor.name+" to "+current.name+" is "+(neighbor.heuristic*1000)+"m");
+                    openList.add(neighbor);
+                }
+            }
+        }
+    }
+    
+    
+    public void Astar(String start_place, String goal_place){
+        PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingInt(Node::heuristic));
+        HashSet<Node> closedList = new HashSet<>();
+        HashMap<String, Integer> gValueMap = new HashMap<>();
+            
+        Node starting_position = getNodeByName(start_place);
+        starting_position.parent = null;
+
+        openList.add(starting_position);
+        gValueMap.put(starting_position.name, 0);
+        
+        while(!openList.isEmpty()){
+            Node current = openList.poll();
+            
+            if(current.name.equalsIgnoreCase(goal_place)){
+                reconstruct_path_with_distance(current);
+                return;
+            }
+
+            closedList.add(current);
+            
+            for(Neighbor neighborNode : current.neighbors){
+                Node neighbor = neighborNode.node;
+
+                int tentativeGValue = gValueMap.get(current.name) + current.getCost(neighbor.name);
+
+                if(closedList.contains(neighbor)){
+                    if(tentativeGValue >= gValueMap.get(neighbor.name))
+                        continue;
+                    closedList.remove(neighbor);
+                }
+
+                if(!openList.contains(neighbor) || tentativeGValue < gValueMap.get(neighbor.name)){
+                    neighbor.parent = current;
+
+                    neighbor.updateHeuristicValue(current.name);
+                    //neighbor.heuristic = current.heuristic;
+                    
+                    //System.out.println("Heuristic Value from "+neighbor.name+" to "+current.name+" is "+(neighbor.heuristic*1000)+"m");
+                    gValueMap.put(neighbor.name, tentativeGValue);
+                    openList.add(neighbor);
+                }
+            }
+            
+        }
+
+    }
+    
+    
+    private void reconstruct_path_with_distance(Node lastnode)
+    {
+        System.out.println("Reconstructing path.");
+        LinkedList<Node> path = new LinkedList<Node>();
+        while(lastnode != null) {
+            path.addFirst(lastnode);
+            lastnode = lastnode.parent; // move backward
+        }
+        
+        Iterator<Node> node_ite = path.iterator();
+        System.out.printf("%15s %25s\n","Place", "Distance");
+        int total = 0;
+        while(node_ite.hasNext()) {
+            Node temp = node_ite.next();
+            String formatted_name = String.format("%-30s", temp.name);
+            int distance = temp.parent!=null?temp.getCost(temp.parent.name):0;
+            total+=distance;
+            System.out.println("-> "+ formatted_name +" "+distance+"m");
+        }
+        
+        System.out.printf("%15s %22dm | %.2fkm\n","TOTAL", total, (float)(total/1000.0f));
+
+        System.out.println();
+    }
+    
+   
 }

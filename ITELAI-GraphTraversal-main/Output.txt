@@ -1,3 +1,4 @@
+PS D:\Important\Course Files\4TH YEAR 2ND SEM\AI\IT_ELAI\ITELAI-GraphTraversal-main> java MainDriver
 ADJACENCY LIST
 atlantic hardware::>jollibee gaisano tabunok->
 jollibee gaisano tabunok::>atlantic hardware->tabunok->j&t express->
@@ -31,26 +32,50 @@ cebu cardinal bakeshop::>7-eleven dumlog->sao joseph fab & signage trading->
 7-eleven dumlog::>yasco motor parts corporation->sta. teresa de avila church->cebu cardinal bakeshop->
 
 
-Origin: paz beach resort
-Goal: south covina
+Origin: starmall talisay
+Goal: atlantic hardware
 
 
 Breadth First Search
-TRAVERSAL
-paz beach resort->cansojong basketball gym->maglasang subd.->sta. teresa de avila church->tanke->rafael rabaya rd.->adelante pizza->7-eleven dumlog->
 Reconstructing path.
-paz beach resort->cansojong basketball gym->sta. teresa de avila church->south covina->
+starmall talisay->yahay foodpark->robinsons supermarket->wilcon depot->simbajon medical clinic->tabunok->jollibee gaisano tabunok->atlantic hardware->
 
 
 Depth First Search
-TRAVERSAL
-paz beach resort->cansojong basketball gym->tanke->san roque->gaisano capital srp->rex kandingan sa srp->rafael rabaya rd.->paseo ricardo commercial center->j&t express->victoria's halo halo->montery school inc->cebu south medical center->yasco motor parts corporation->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->
 Reconstructing path.
-paz beach resort->cansojong basketball gym->tanke->rafael rabaya rd.->paseo ricardo commercial center->j&t express->victoria's halo halo->montery school inc->cebu south medical center->yasco motor parts corporation->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->
+starmall talisay->yasco motor parts corporation->7-eleven dumlog->sta. teresa de avila church->cansojong basketball gym->tanke->rafael rabaya rd.->paseo ricardo commercial center->j&t express->jollibee gaisano tabunok->atlantic hardware->
 
 
 Depth First Search [RECURSIVE]
-TRAVERSAL
-paz beach resort->cansojong basketball gym->maglasang subd.->rafael rabaya rd.->paseo ricardo commercial center->j&t express->jollibee gaisano tabunok->atlantic hardware->tabunok->lagtang barangay hall->simbajon medical clinic->wilcon depot->robinsons supermarket->yahay foodpark->starmall talisay->yasco motor parts corporation->cebu south medical center->montery school inc->victoria's halo halo->adelante pizza->sta. teresa de avila church->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->
+Found in DFS_recursive!
 Reconstructing path.
-paz beach resort->cansojong basketball gym->maglasang subd.->rafael rabaya rd.->paseo ricardo commercial center->j&t express->jollibee gaisano tabunok->tabunok->simbajon medical clinic->wilcon depot->robinsons supermarket->yahay foodpark->starmall talisay->yasco motor parts corporation->adelante pizza->sta. teresa de avila church->7-eleven dumlog->cebu cardinal bakeshop->sao joseph fab & signage trading->rafols resort->south covina->
+starmall talisay->yahay foodpark->robinsons supermarket->wilcon depot->simbajon medical clinic->tabunok->jollibee gaisano tabunok->atlantic hardware->
+
+
+Greedy Best-First-Search
+Reconstructing path.
+          Place                  Distance
+-> starmall talisay               0m
+-> yahay foodpark                 330m
+-> robinsons supermarket          330m
+-> wilcon depot                   510m
+-> simbajon medical clinic        360m
+-> tabunok                        350m
+-> jollibee gaisano tabunok       340m
+-> atlantic hardware              383m
+          TOTAL                   2603m | 2.60km
+
+
+
+A* Algorithm
+Reconstructing path.
+          Place                  Distance
+-> starmall talisay               0m
+-> yahay foodpark                 330m
+-> robinsons supermarket          330m
+-> wilcon depot                   510m
+-> simbajon medical clinic        360m
+-> tabunok                        350m
+-> jollibee gaisano tabunok       340m
+-> atlantic hardware              383m
+          TOTAL                   2603m | 2.60km

@@ -37,6 +37,8 @@ public class Node {
     public boolean isVisited;
     public Node parent;
     public LinkedList<Neighbor> neighbors;
+    private Map<String, Double> heuristicMap;
+    public double heuristic;
     
     public Node(String n)
     {
@@ -44,6 +46,7 @@ public class Node {
         this.name = n;
         this.isVisited = false;
         neighbors = new LinkedList<Neighbor>();
+        heuristicMap = new HashMap<>();
     }
 
     //------------------------------------------------------------------------
@@ -56,5 +59,24 @@ public class Node {
     {
         Neighbor neighbor = new Neighbor(n);
         neighbors.add(neighbor);
+    }
+
+    public void addNeighbor(Node n, double d)
+    {
+        Neighbor neighbor = new Neighbor(n);
+        neighbors.add(neighbor);
+        heuristicMap.put(n.name, d);
+    }
+
+    public int heuristic(){
+        return (int)(heuristic*1000);
+    }
+
+    public void updateHeuristicValue(String position){
+        heuristic = heuristicMap.get(position);
+    }
+
+    public int getCost(String neighbor){
+        return (int)(heuristicMap.get(neighbor)*1000);
     }
 }
